@@ -19,6 +19,6 @@ router.get("/", getComplaints);
 router.put("/:id", updateComplaintStatus);
 router.delete("/:id", deleteComplaint);
 
-router.get("/search/location", searchComplaintByLocation);
+router.get("/search", searchComplaintByLocation);
 
 module.exports = router;

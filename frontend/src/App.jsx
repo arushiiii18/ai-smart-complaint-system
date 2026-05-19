@@ -171,13 +171,14 @@ function Login() {
 function Register() {
 
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    title: "",
-    description: "",
-    category: "",
-    location: "",
-  });
+  name: "",
+  email: "",
+  title: "",
+  description: "",
+  category: "",
+  location: "",
+  status: "Pending",
+});
 
   const [aiResult, setAiResult] = useState("");
 
@@ -235,6 +236,24 @@ function Register() {
           onChange={handleChange}
           required
         />
+        <select
+  name="status"
+  onChange={handleChange}
+>
+
+  <option value="Pending">
+    Pending
+  </option>
+
+  <option value="In Progress">
+    In Progress
+  </option>
+
+  <option value="Resolved">
+    Resolved
+  </option>
+
+</select>
 
         <input
           type="email"
@@ -323,8 +342,8 @@ function Complaints() {
     try {
 
       const res = await API.get(
-        `/complaints/search/location?location=${search}`
-      );
+  `/complaints/search?location=${search}`
+);
 
       setComplaints(res.data);
 
